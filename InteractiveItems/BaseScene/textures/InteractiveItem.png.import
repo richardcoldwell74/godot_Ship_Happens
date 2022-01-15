@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/readme-enable.png-86bd87b56cede29f6cfbdb3368d4bc9a.stex"
+path="res://.import/InteractiveItem.png-4d9928a6d437a24750fc1cf3654a6bef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://readme-enable.png"
-dest_files=[ "res://.import/readme-enable.png-86bd87b56cede29f6cfbdb3368d4bc9a.stex" ]
+source_file="res://InteractiveItems/BaseScene/textures/InteractiveItem.png"
+dest_files=[ "res://.import/InteractiveItem.png-4d9928a6d437a24750fc1cf3654a6bef.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
