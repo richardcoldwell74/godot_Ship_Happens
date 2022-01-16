@@ -22,6 +22,7 @@ func _physics_process(delta):
 	if state == "LADDER":
 		get_input_ladder();
 		velocity = move_and_slide(velocity, Vector2(0, -1))
+		player_animations(is_on_floor())
 	if !is_ovelapping_ladder:
 		state = "PLATFORM"
 	$Label.text = String(is_ovelapping_ladder)
@@ -62,24 +63,30 @@ func get_input_ladder() -> void:
 
 
 func player_animations(IsOnFloor:bool)-> void:
-	if IsOnFloor:
-		if velocity.x == 0:
-			$AnimationPlayer.play("idle")
-		elif velocity.x < 0:
-			$Sprite.scale.x = -1
-			$AnimationPlayer.play("run")
-		elif velocity.x > 0:
-			$Sprite.scale.x = 1
-			$AnimationPlayer.play("run")
-	if !IsOnFloor:
-		if velocity.y < 0:
-			$AnimationPlayer.play("jump")
-		elif  velocity.y > 0:
-			$AnimationPlayer.play("fall")
-		if velocity.x < 0:
-			$Sprite.scale.x = -1
-		if velocity.x > 0:
-			$Sprite.scale.x = 1
+	if state == "PLATFORM":
+		if IsOnFloor:
+			if velocity.x == 0:
+				$AnimationPlayer.play("idle")
+			elif velocity.x < 0:
+				$Sprite.scale.x = -1
+				$AnimationPlayer.play("run")
+			elif velocity.x > 0:
+				$Sprite.scale.x = 1
+				$AnimationPlayer.play("run")
+		if !IsOnFloor:
+			if velocity.y < 0:
+				$AnimationPlayer.play("jump")
+			elif  velocity.y > 0:
+				$AnimationPlayer.play("fall")
+			if velocity.x < 0:
+				$Sprite.scale.x = -1
+			if velocity.x > 0:
+				$Sprite.scale.x = 1
+	if state == "LADDER":
+		if velocity.y == 0:
+			$AnimationPlayer.stop()
+		elif velocity.y != 0:
+			$AnimationPlayer.play("climbing")
 
 
 
