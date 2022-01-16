@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 2.5 )
+
+[node name="LadderTop" type="Area2D" groups=["ladder_top"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 5 )
