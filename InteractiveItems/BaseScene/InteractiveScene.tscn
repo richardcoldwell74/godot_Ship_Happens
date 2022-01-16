@@ -76,5 +76,10 @@ anims/RESET = SubResource( 2 )
 anims/broken = SubResource( 3 )
 anims/working = SubResource( 4 )
 
+[node name="BreakDownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_InteractiveScene_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_InteractiveScene_body_exited"]
+[connection signal="timeout" from="BreakDownTimer" to="." method="_on_BreakDownTimer_timeout"]

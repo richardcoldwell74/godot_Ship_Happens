@@ -9,10 +9,10 @@ func _ready():
 	is_player_overlapping = false
 	is_working = true
 	$AnimationPlayer.play("working")
-	var _state_change_signal = SignalManager.connect(SignalManager.CHANGE_ENGINE_STATE, self, "change_state")
 
 func _process(delta):
 	$ButtonTip.visible = is_player_overlapping
+	$BreakDownTimer.start()
 
 
 func _on_InteractiveScene_body_entered(body):
@@ -25,9 +25,14 @@ func _on_InteractiveScene_body_exited(body):
 		is_player_overlapping = false
 
 func change_state() -> void:
-	print("change_state")
 	is_working = !is_working
 	if is_working:
 		$AnimationPlayer.play("working")
 	else:
 		$AnimationPlayer.play("broken")
+	$BreakDownTimer.start()
+
+
+func _on_BreakDownTimer_timeout():
+	print("Timer Timout")
+	change_state()
