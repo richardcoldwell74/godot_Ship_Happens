@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://InteractiveItems/BaseScene/InteractiveScene.gd" type="Script" id=1]
 [ext_resource path="res://InteractiveItems/BaseScene/textures/InteractiveItem.png" type="Texture" id=2]
 [ext_resource path="res://InteractiveItems/BaseScene/textures/ctrl_prompt.png" type="Texture" id=3]
+[ext_resource path="res://InteractiveItems/BaseScene/textures/warning.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -54,6 +55,66 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -8 ), Vector2( 0, -10 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "one"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "three"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "two"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
 [node name="InteractiveScene" type="Area2D"]
 collision_layer = 2
 script = ExtResource( 1 )
@@ -80,6 +141,21 @@ anims/working = SubResource( 4 )
 wait_time = 3.0
 one_shot = true
 
+[node name="BrokenDownTimer" type="Timer" parent="."]
+
+[node name="Warning" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -24 )
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="WarningAnimationPlayer" type="AnimationPlayer" parent="Warning"]
+anims/RESET = SubResource( 5 )
+anims/one = SubResource( 6 )
+anims/three = SubResource( 7 )
+anims/two = SubResource( 8 )
+
 [connection signal="body_entered" from="." to="." method="_on_InteractiveScene_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_InteractiveScene_body_exited"]
 [connection signal="timeout" from="BreakDownTimer" to="." method="_on_BreakDownTimer_timeout"]
+[connection signal="timeout" from="BrokenDownTimer" to="." method="_on_BrokenDownTimer_timeout"]
