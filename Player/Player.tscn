@@ -133,18 +133,6 @@ position = Vector2( 0, -5 )
 shape = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_left = -19.0
-margin_top = -30.0
-margin_right = 21.0
-margin_bottom = -16.0
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
 margin_left = -20.0
 margin_top = -30.0
 margin_right = 20.0

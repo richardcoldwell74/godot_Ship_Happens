@@ -25,8 +25,7 @@ func _physics_process(delta):
 		player_animations(is_on_floor())
 	if !is_ovelapping_ladder:
 		state = "PLATFORM"
-	$Label.text = String(is_ovelapping_ladder)
-	$Label2.text =  state
+	$Label.text =  state
 
 
 func get_input() -> void:
@@ -58,6 +57,8 @@ func get_input_ladder() -> void:
 			velocity.y -= climb_speed
 		if down:
 			velocity.y += climb_speed
+		if is_on_floor():
+			state = "PLATFORM"
 
 
 
