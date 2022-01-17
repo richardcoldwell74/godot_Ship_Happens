@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boat_game.png-da2c113e0cb8807e316624951b284495.stex"
+path="res://.import/boat_game_back.png-478234eb3f68b3f1a61d0e548c3394ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level/textures/boat_game.png"
-dest_files=[ "res://.import/boat_game.png-da2c113e0cb8807e316624951b284495.stex" ]
+source_file="res://Level/textures/boat_game_back.png"
+dest_files=[ "res://.import/boat_game_back.png-478234eb3f68b3f1a61d0e548c3394ae.stex" ]
 
 [params]
 

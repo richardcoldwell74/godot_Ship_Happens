@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Level/textures/tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://Level/Level.gd" type="Script" id=4]
 [ext_resource path="res://Ladder/Ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Ladder/LadderTop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Level/textures/boat_game.png" type="Texture" id=7]
+[ext_resource path="res://Level/textures/boat_game_front.png" type="Texture" id=7]
 [ext_resource path="res://Level/Solid.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Level/OneWay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Level/textures/boat_game_back.png" type="Texture" id=10]
+[ext_resource path="res://Level/Propeller.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -88,7 +90,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -101,19 +103,26 @@ format = 1
 position = Vector2( 205, 114 )
 
 [node name="Ladder" parent="." groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 141, 114 )
 scale = Vector2( 0.3, 2 )
 
 [node name="Ladder2" parent="." groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 189, 82 )
 scale = Vector2( 0.3, 2 )
 
 [node name="Ladder3" parent="." groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 115, 82 )
 scale = Vector2( 0.3, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 169, 104 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
 
 [node name="LadderTop" parent="." instance=ExtResource( 6 )]
 position = Vector2( 141, 82 )
@@ -127,29 +136,53 @@ position = Vector2( 115, 50 )
 [node name="GameTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Solid" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor" parent="." instance=ExtResource( 8 )]
 position = Vector2( 166, 117 )
 scale = Vector2( 6.5, 1 )
 
-[node name="Solid2" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 206, 85 )
 scale = Vector2( 5.5, 1 )
 
-[node name="Solid3" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 101, 85 )
 scale = Vector2( 3, 1 )
 
-[node name="Solid4" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 75, 53 )
 scale = Vector2( 3, 1 )
 
-[node name="Solid5" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 152, 53 )
 scale = Vector2( 2.7, 1 )
 
-[node name="Solid6" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor6" parent="." instance=ExtResource( 8 )]
 position = Vector2( 244, 53 )
 scale = Vector2( 4.5, 1 )
+
+[node name="SolidWall" parent="." instance=ExtResource( 8 )]
+position = Vector2( 256, 82 )
+scale = Vector2( 0.5, 10 )
+
+[node name="SolidWall2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 74, 83 )
+scale = Vector2( 0.5, 10 )
+
+[node name="SolidWall3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 98, 115 )
+scale = Vector2( 0.5, 10 )
+
+[node name="SolidWall4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 234, 114 )
+scale = Vector2( 0.5, 10 )
+
+[node name="SolidWall5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 234, 114 )
+scale = Vector2( 0.5, 10 )
+
+[node name="SolidWall6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 294, 53 )
+scale = Vector2( 0.5, 10 )
 
 [node name="OneWay" parent="." instance=ExtResource( 9 )]
 position = Vector2( 141, 85 )
@@ -159,5 +192,7 @@ position = Vector2( 115, 53 )
 
 [node name="OneWay3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 189, 53 )
+
+[node name="Propeller" parent="." instance=ExtResource( 11 )]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
