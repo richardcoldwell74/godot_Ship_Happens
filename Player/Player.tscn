@@ -132,16 +132,5 @@ anims/run = SubResource( 3 )
 position = Vector2( 0, -5 )
 shape = SubResource( 7 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = -20.0
-margin_top = -30.0
-margin_right = 20.0
-margin_bottom = -16.0
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_LadderDetector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_LadderDetector_area_exited"]

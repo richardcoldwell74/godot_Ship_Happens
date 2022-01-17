@@ -19,14 +19,12 @@ func _physics_process(delta):
 		get_input_platform()
 		velocity.y += gravity * delta
 		velocity = move_and_slide(velocity, Vector2(0, -1))
-		player_animations(is_on_floor())
 	if state == "LADDER":
 		get_input_ladder()
 		velocity = move_and_slide(velocity, Vector2(0, -1))
-		player_animations(is_on_floor())
+	player_animations(is_on_floor())
 	if !is_ovelapping_ladder:
 		state = "PLATFORM"
-	$Label.text = state
 
 
 func get_input_platform() -> void:
