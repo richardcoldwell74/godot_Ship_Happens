@@ -36,16 +36,14 @@ func get_input_platform() -> void:
 	var jump = Input.is_action_just_pressed("player_jump")
 	if jump and is_on_floor() and state == "PLATFORM":
 		velocity.y = jump_speed
-	# up down to change state to ladder
-	var up = Input.is_action_pressed("player_up")
-	var down = Input.is_action_pressed("player_down")
-	if is_ovelapping_ladder and up:
+	# capture up & down to use in changing to ladder state
+	var YInput: float = Input.get_axis("player_up", "player_down") * climb_speed
+	if is_ovelapping_ladder and YInput < 0:
 		state = "LADDER"
-	if is_ovelapping_ladder_top and is_on_floor() and down:
+	if is_ovelapping_ladder_top and is_on_floor() and YInput > 0:
 		state = "LADDER"
 		position.y += 1
 		is_ovelapping_ladder = true
-	
 
 
 func get_input_ladder() -> void:
@@ -56,7 +54,6 @@ func get_input_ladder() -> void:
 	velocity.y = Input.get_axis("player_up", "player_down") * climb_speed
 	if is_on_floor():
 		state = "PLATFORM"
-
 
 
 func player_animations(IsOnFloor: bool) -> void:
