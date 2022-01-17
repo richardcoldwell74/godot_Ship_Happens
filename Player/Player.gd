@@ -16,7 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	if state == "PLATFORM":
-		get_input()
+		get_input_platform()
 		velocity.y += gravity * delta
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		player_animations(is_on_floor())
@@ -29,10 +29,14 @@ func _physics_process(delta):
 	$Label.text = state
 
 
-func get_input() -> void:
+func get_input_platform() -> void:
 	#left right movement
 	velocity.x = Input.get_axis("player_left", "player_right") * run_speed
-	# up down movement
+	#jump
+	var jump = Input.is_action_just_pressed("player_jump")
+	if jump and is_on_floor() and state == "PLATFORM":
+		velocity.y = jump_speed
+	# up down to change state to ladder
 	var up = Input.is_action_pressed("player_up")
 	var down = Input.is_action_pressed("player_down")
 	if is_ovelapping_ladder and up:
@@ -41,26 +45,18 @@ func get_input() -> void:
 		state = "LADDER"
 		position.y += 1
 		is_ovelapping_ladder = true
-	#jump
-	var jump = Input.is_action_just_pressed("player_jump")
-	if jump and is_on_floor() and state == "PLATFORM":
-		velocity.y = jump_speed
+	
 
 
 func get_input_ladder() -> void:
 	velocity = Vector2.ZERO
 	#left right movement
-	velocity.x = Input.get_axis("player_left", "player_right") * run_speed
+	velocity.x = Input.get_axis("player_left", "player_right") * climb_speed
 	# up down movement
-	var up = Input.is_action_pressed("player_up")
-	var down = Input.is_action_pressed("player_down")
-	if state == "LADDER":
-		if up:
-			velocity.y -= climb_speed
-		if down:
-			velocity.y += climb_speed
-		if is_on_floor():
-			state = "PLATFORM"
+	velocity.y = Input.get_axis("player_up", "player_down") * climb_speed
+	if is_on_floor():
+		state = "PLATFORM"
+
 
 
 func player_animations(IsOnFloor: bool) -> void:
