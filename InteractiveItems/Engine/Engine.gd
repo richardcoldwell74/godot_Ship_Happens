@@ -20,6 +20,7 @@ func _ready():
 	state = "WORKING"
 	$BreakDownTimer.start(rand_range(5, 10))
 	$Warning.visible = false
+	$AudioStreamPlayer2D.play(0.0)
 
 
 func _process(_delta):
@@ -33,6 +34,7 @@ func _on_BreakDownTimer_timeout():
 func set_broken() -> void:
 	if GameManager.ItemsBrokenCurrentCount < GameManager.MaxItemsBrokenAtOneTime:
 		state = "BROKEN_STAGE_ONE"
+		$AudioStreamPlayer2D.stop()
 		$Propeller.stop_propeller()
 		$AnimationPlayer.play("broken")
 		$BrokenDownTimer.start(4.0)
@@ -91,6 +93,7 @@ func repairing_damage() -> void:
 				$BreakDownTimer.start(rand_range(5, 10))
 				$Propeller.start_propeller()
 				$AnimationPlayer.play("working")
+				$AudioStreamPlayer2D.play(0.0)
 				is_being_repaired = false
 		elif is_being_repaired:
 			is_being_repaired = false

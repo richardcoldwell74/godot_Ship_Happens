@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://InteractiveItems/Engine/Engine.gd" type="Script" id=1]
 [ext_resource path="res://InteractiveItems/Engine/textures/engine.png" type="Texture" id=2]
 [ext_resource path="res://InteractiveItems/Engine/textures/ctrl_prompt.png" type="Texture" id=3]
 [ext_resource path="res://InteractiveItems/Engine/textures/warning.png" type="Texture" id=4]
 [ext_resource path="res://Level/Propeller.tscn" type="PackedScene" id=5]
+[ext_resource path="res://InteractiveItems/Engine/sfx/engine.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -190,6 +191,9 @@ anims/two = SubResource( 8 )
 
 [node name="Propeller" parent="." instance=ExtResource( 5 )]
 position = Vector2( -40, -1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="body_entered" from="." to="." method="_on_InteractiveScene_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_InteractiveScene_body_exited"]
