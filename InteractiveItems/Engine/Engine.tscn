@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://InteractiveItems/Engine/Engine.gd" type="Script" id=1]
-[ext_resource path="res://InteractiveItems/Engine/textures/InteractiveItem.png" type="Texture" id=2]
+[ext_resource path="res://InteractiveItems/Engine/textures/engine.png" type="Texture" id=2]
 [ext_resource path="res://InteractiveItems/Engine/textures/ctrl_prompt.png" type="Texture" id=3]
 [ext_resource path="res://InteractiveItems/Engine/textures/warning.png" type="Texture" id=4]
 [ext_resource path="res://Level/Propeller.tscn" type="PackedScene" id=5]
@@ -12,7 +12,7 @@ extents = Vector2( 8, 8 )
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Item:position")
+tracks/0/path = NodePath("EngineSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,12 +22,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EngineSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "broken"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Item:position")
+tracks/0/path = NodePath("EngineSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,25 +47,25 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -8 ) ]
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "working"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Item:position")
+tracks/0/path = NodePath("EngineSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -8 ), Vector2( 0, -10 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2, 3, 4, 5, 6, 7 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -142,19 +154,21 @@ script = ExtResource( 1 )
 position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
-[node name="Item" type="Sprite" parent="."]
+[node name="EngineSprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
-
-[node name="ButtonTip" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, -23 )
-texture = ExtResource( 3 )
+hframes = 8
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/broken = SubResource( 3 )
 anims/working = SubResource( 4 )
+
+[node name="ButtonTip" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -23 )
+texture = ExtResource( 3 )
 
 [node name="BreakDownTimer" type="Timer" parent="."]
 wait_time = 3.0
