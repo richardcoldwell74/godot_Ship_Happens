@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "interactive_scene",
-"language": "GDScript",
-"path": "res://InteractiveItems/BaseScene/InteractiveScene.gd"
-} ]
-_global_script_class_icons={
-"interactive_scene": ""
-}
-
 [application]
 
 config/name="Godot_Wild_Jam_41"

@@ -3,5 +3,10 @@ extends Sprite
 
 
 func _ready():
-	$AnimationPlayer.play("running")
+	start_propeller()
 
+func start_propeller() -> void:
+	$AnimationPlayer.play("running")
+	
+func stop_propeller() -> void:
+	$AnimationPlayer.play("stopped")
