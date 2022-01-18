@@ -102,21 +102,6 @@ format = 1
 [node name="InteractiveScene" parent="." instance=ExtResource( 3 )]
 position = Vector2( 205, 114 )
 
-[node name="Ladder" parent="." groups=["ladder"] instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 141, 114 )
-scale = Vector2( 0.3, 2 )
-
-[node name="Ladder2" parent="." groups=["ladder"] instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 189, 82 )
-scale = Vector2( 0.3, 2 )
-
-[node name="Ladder3" parent="." groups=["ladder"] instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 115, 82 )
-scale = Vector2( 0.3, 2 )
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 169, 104 )
 
@@ -124,74 +109,93 @@ position = Vector2( 169, 104 )
 texture = ExtResource( 7 )
 centered = false
 
-[node name="LadderTop" parent="." instance=ExtResource( 6 )]
-position = Vector2( 141, 82 )
-
-[node name="LadderTop2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 189, 50 )
-
-[node name="LadderTop3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 115, 50 )
-
 [node name="GameTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="SolidFloor" parent="." instance=ExtResource( 8 )]
+[node name="Solids" type="Node2D" parent="."]
+
+[node name="SolidFloor" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 166, 117 )
 scale = Vector2( 6.5, 1 )
 
-[node name="SolidFloor2" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor2" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 206, 85 )
 scale = Vector2( 5.5, 1 )
 
-[node name="SolidFloor3" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor3" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 101, 85 )
 scale = Vector2( 3, 1 )
 
-[node name="SolidFloor4" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor4" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 75, 53 )
 scale = Vector2( 3, 1 )
 
-[node name="SolidFloor5" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor5" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 152, 53 )
 scale = Vector2( 2.7, 1 )
 
-[node name="SolidFloor6" parent="." instance=ExtResource( 8 )]
+[node name="SolidFloor6" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 244, 53 )
 scale = Vector2( 4.5, 1 )
 
-[node name="SolidWall" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 256, 82 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall2" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall2" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 74, 83 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall3" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall3" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 98, 115 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall4" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall4" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 234, 114 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall5" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall5" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 234, 114 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall6" parent="." instance=ExtResource( 8 )]
+[node name="SolidWall6" parent="Solids" instance=ExtResource( 8 )]
 position = Vector2( 294, 53 )
 scale = Vector2( 0.5, 10 )
 
-[node name="OneWay" parent="." instance=ExtResource( 9 )]
+[node name="LadderStuff" type="Node2D" parent="."]
+
+[node name="OneWay" parent="LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 141, 85 )
 
-[node name="OneWay2" parent="." instance=ExtResource( 9 )]
+[node name="OneWay2" parent="LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 115, 53 )
 
-[node name="OneWay3" parent="." instance=ExtResource( 9 )]
+[node name="OneWay3" parent="LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 189, 53 )
+
+[node name="LadderTop" parent="LadderStuff" instance=ExtResource( 6 )]
+position = Vector2( 141, 82 )
+
+[node name="LadderTop2" parent="LadderStuff" instance=ExtResource( 6 )]
+position = Vector2( 189, 50 )
+
+[node name="LadderTop3" parent="LadderStuff" instance=ExtResource( 6 )]
+position = Vector2( 115, 50 )
+
+[node name="Ladder" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 141, 114 )
+scale = Vector2( 0.3, 2 )
+
+[node name="Ladder2" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 189, 82 )
+scale = Vector2( 0.3, 2 )
+
+[node name="Ladder3" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 115, 82 )
+scale = Vector2( 0.3, 2 )
 
 [node name="Propeller" parent="." instance=ExtResource( 11 )]
 
