@@ -56,12 +56,12 @@ func _on_BrokenDownTimer_timeout():
 			$Warning/WarningAnimationPlayer.play("three")
 
 
-func _on_InteractiveScene_body_entered(body):
+func _on_Kitchen_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
 		is_player_overlapping = true
 
 
-func _on_InteractiveScene_body_exited(body):
+func _on_Kitchen_body_exited(body):
 	if body.is_in_group("PlayerGroup"):
 		is_player_overlapping = false
 
@@ -100,3 +100,4 @@ func repairing_damage() -> void:
 			$BrokenDownTimer.start(4.0)
 		else:
 			is_being_repaired = false
+
