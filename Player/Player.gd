@@ -6,6 +6,7 @@ var jump_speed: int = -150
 var gravity: int = 800
 var is_ovelapping_ladder: bool = false
 var is_ovelapping_ladder_top: bool = false
+var is_ovelapping_repairable: bool = false
 var state: String
 var velocity: Vector2 = Vector2.ZERO
 
@@ -42,6 +43,11 @@ func get_input_platform() -> void:
 		state = "LADDER"
 		position.y += 1
 		is_ovelapping_ladder = true
+	var actionPressed = Input.is_action_pressed("player_action")
+	if actionPressed and is_ovelapping_repairable:
+		state = "FIXING"
+	else:
+		state == "PLATFORM"
 
 
 func get_input_ladder() -> void:
@@ -55,6 +61,8 @@ func get_input_ladder() -> void:
 
 
 func player_animations(IsOnFloor: bool) -> void:
+	if state == "FIXING":
+		$AnimationPlayer.play("fixing")
 	if state == "PLATFORM":
 		if IsOnFloor:
 			if velocity.x == 0:
@@ -81,15 +89,19 @@ func player_animations(IsOnFloor: bool) -> void:
 			$AnimationPlayer.play("climbing")
 
 
-func _on_LadderDetector_area_entered(area):
+func _on_AreaDetector_area_entered(area):
 	if area.is_in_group("ladder"):
 		is_ovelapping_ladder = true
 	if area.is_in_group("ladder_top"):
 		is_ovelapping_ladder_top = true
+	if area.is_in_group("repairable"):
+		is_ovelapping_repairable = true
 
 
-func _on_LadderDetector_area_exited(area):
+func _on_AreaDetector_area_exited(area):
 	if area.is_in_group("ladder"):
 		is_ovelapping_ladder = false
 	if area.is_in_group("ladder_top"):
 		is_ovelapping_ladder_top = false
+	if area.is_in_group("repairable"):
+		is_ovelapping_repairable = false

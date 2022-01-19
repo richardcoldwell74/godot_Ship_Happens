@@ -143,11 +143,11 @@ anims/idle = SubResource( 6 )
 anims/jump = SubResource( 4 )
 anims/run = SubResource( 3 )
 
-[node name="LadderDetector" type="Area2D" parent="."]
+[node name="AreaDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetector"]
 position = Vector2( 0, -5 )
 shape = SubResource( 7 )
 
-[connection signal="area_entered" from="LadderDetector" to="." method="_on_LadderDetector_area_entered"]
-[connection signal="area_exited" from="LadderDetector" to="." method="_on_LadderDetector_area_exited"]
+[connection signal="area_entered" from="AreaDetector" to="." method="_on_AreaDetector_area_entered"]
+[connection signal="area_exited" from="AreaDetector" to="." method="_on_AreaDetector_area_exited"]
