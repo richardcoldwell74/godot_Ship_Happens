@@ -195,3 +195,5 @@ stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_Kitchen_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Kitchen_body_exited"]
+[connection signal="timeout" from="BreakDownTimer" to="." method="_on_BreakDownTimer_timeout"]
+[connection signal="timeout" from="BrokenDownTimer" to="." method="_on_BrokenDownTimer_timeout"]

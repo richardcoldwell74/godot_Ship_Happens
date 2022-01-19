@@ -33,6 +33,7 @@ func _on_BreakDownTimer_timeout():
 
 func set_broken() -> void:
 	if GameManager.ItemsBrokenCurrentCount < GameManager.MaxItemsBrokenAtOneTime:
+		GameManager.ItemsBrokenCurrentCount += 1
 		state = "BROKEN_STAGE_ONE"
 		$AudioStreamPlayer2D.stop()
 		#$Propeller.stop_propeller()
@@ -88,6 +89,7 @@ func repairing_damage() -> void:
 			repair_progress += 1
 			if repair_progress >= fully_repaired_value:
 				state = "WORKING"
+				GameManager.ItemsBrokenCurrentCount -= 1
 				repair_progress = 0
 				$Warning.visible = false
 				$BreakDownTimer.start(rand_range(5, 10))

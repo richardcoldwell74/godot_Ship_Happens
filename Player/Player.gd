@@ -95,7 +95,8 @@ func _on_AreaDetector_area_entered(area):
 	if area.is_in_group("ladder_top"):
 		is_ovelapping_ladder_top = true
 	if area.is_in_group("repairable"):
-		is_ovelapping_repairable = true
+		if area.state != "WORKING":
+			is_ovelapping_repairable = true
 
 
 func _on_AreaDetector_area_exited(area):
