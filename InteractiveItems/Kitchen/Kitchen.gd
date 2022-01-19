@@ -1,6 +1,5 @@
 extends Area2D
 
-
 var is_player_overlapping: bool
 var is_working: bool
 var state: String
@@ -20,6 +19,7 @@ func _ready():
 	state = "WORKING"
 	$BreakDownTimer.start(rand_range(5, 10))
 	$Warning.visible = false
+	$Fire.visible = false
 	$AudioStreamPlayer2D.play(0.0)
 
 
@@ -36,7 +36,8 @@ func set_broken() -> void:
 		GameManager.ItemsBrokenCurrentCount += 1
 		state = "BROKEN_STAGE_ONE"
 		$AudioStreamPlayer2D.stop()
-		#$Propeller.stop_propeller()
+		$Fire.visible = true
+		$Fire/AnimationPlayer.play("on_fire")
 		$AnimationPlayer.play("broken")
 		$BrokenDownTimer.start(4.0)
 		$Warning.visible = true
@@ -93,7 +94,7 @@ func repairing_damage() -> void:
 				repair_progress = 0
 				$Warning.visible = false
 				$BreakDownTimer.start(rand_range(5, 10))
-				#$Propeller.start_propeller()
+				$Fire.visible = false
 				$AnimationPlayer.play("working")
 				$AudioStreamPlayer2D.play(0.0)
 				is_being_repaired = false
@@ -102,4 +103,3 @@ func repairing_damage() -> void:
 			$BrokenDownTimer.start(4.0)
 		else:
 			is_being_repaired = false
-
