@@ -9,3 +9,4 @@ func _on_spawn_crab(Crab: PackedScene, Location: Vector2) -> void:
 	var crab: Area2D = Crab.instance()
 	add_child(crab)
 	crab.position = Location
+	GameManager.NoCrabsOnScreen += 1

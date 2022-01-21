@@ -9,3 +9,4 @@ func _on_spawn_shark(Shark: PackedScene, Location: Vector2) -> void:
 	var shark: Area2D = Shark.instance()
 	add_child(shark)
 	shark.position = Location
+	GameManager.NoSharksOnScreen += 1
