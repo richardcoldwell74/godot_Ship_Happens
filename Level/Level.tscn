@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Level/textures/tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,8 +12,15 @@
 [ext_resource path="res://Level/textures/boat_game_back.png" type="Texture" id=10]
 [ext_resource path="res://InteractiveItems/Kitchen/Kitchen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Level/textures/sea.png" type="Texture" id=12]
+[ext_resource path="res://Level/textures/seabed.png" type="Texture" id=13]
 [ext_resource path="res://Level/CrabSpawner.gd" type="Script" id=14]
 [ext_resource path="res://Level/SharkSpawner.gd" type="Script" id=15]
+[ext_resource path="res://Shaders/ScrollShader.gdshader" type="Shader" id=16]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 16 )
+shader_param/Direction = Vector2( 1, 0 )
+shader_param/Speed = 0.08
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -89,10 +96,16 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 2/z_index = 0
 
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 16 )
+shader_param/Direction = Vector2( 1, 0 )
+shader_param/Speed = 0.04
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="LevelBackground" type="Sprite" parent="."]
+material = SubResource( 7 )
 texture = ExtResource( 12 )
 centered = false
 
@@ -214,5 +227,10 @@ script = ExtResource( 14 )
 [node name="SharkSpawner" type="Node2D" parent="."]
 position = Vector2( 359, 140 )
 script = ExtResource( 15 )
+
+[node name="SeaBed" type="Sprite" parent="."]
+material = SubResource( 6 )
+texture = ExtResource( 13 )
+centered = false
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
