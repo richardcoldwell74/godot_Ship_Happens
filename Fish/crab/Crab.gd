@@ -1,7 +1,6 @@
 extends Area2D
 
-
-var velocity: Vector2 = Vector2(50, 0)
+var velocity: Vector2 = Vector2(20, 0)
 
 
 func _ready():
@@ -9,8 +8,8 @@ func _ready():
 
 
 func _physics_process(delta) -> void:
-	position -= velocity * delta  
+	position -= velocity * delta
 
 
-func fish_caught()-> void:
+func fish_caught() -> void:
 	$AnimationPlayer.play("caught")

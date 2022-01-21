@@ -11,8 +11,8 @@
 [ext_resource path="res://Level/OneWay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Level/textures/boat_game_back.png" type="Texture" id=10]
 [ext_resource path="res://InteractiveItems/Kitchen/Kitchen.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Fish/shark/Shark.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Fish/crab/Crab.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Level/CrabSpawner.gd" type="Script" id=14]
+[ext_resource path="res://Level/SharkSpawner.gd" type="Script" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -202,10 +202,12 @@ visible = false
 position = Vector2( 115, 82 )
 scale = Vector2( 0.3, 2 )
 
-[node name="Shark" parent="." instance=ExtResource( 12 )]
-position = Vector2( 388, 145 )
+[node name="CrabSpawner" type="Node2D" parent="."]
+position = Vector2( 356, 167 )
+script = ExtResource( 14 )
 
-[node name="Crab" parent="." instance=ExtResource( 13 )]
-position = Vector2( 336, 167 )
+[node name="SharkSpawner" type="Node2D" parent="."]
+position = Vector2( 359, 140 )
+script = ExtResource( 15 )
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
