@@ -103,7 +103,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, -1 ), Vector2( -1, -2 ), Vector2( -1, -1 ) ]
 }
 
-[node name="Crab" type="Area2D"]
+[node name="Crab" type="Area2D" groups=["fish"]]
 position = Vector2( 1, -9 )
 script = ExtResource( 1 )
 

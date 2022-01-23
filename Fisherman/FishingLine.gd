@@ -10,15 +10,17 @@ func _ready():
 
 
 func _physics_process(delta) -> void:
-	if going_down:
-		$Hook.position += velocity * delta
-	elif !going_down:
-		$Hook.position -= velocity * delta
-	bottom_screen_auto_recall()
-	top_screen_destroy()
+	if GameManager.GameRunning:
+		if going_down:
+			$Hook.position += velocity * delta
+		elif !going_down:
+			$Hook.position -= velocity * delta
+		bottom_screen_auto_recall()
+		top_screen_destroy()
 
 func top_screen_destroy() -> void:
 	if $Hook.position.y  < 0:
+		GameManager.FishingLineOnScreen = false
 		queue_free()
 
 func bottom_screen_auto_recall() -> void:

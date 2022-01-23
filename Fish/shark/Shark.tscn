@@ -103,7 +103,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 3, 2, 1 ]
 }
 
-[node name="Shark" type="Area2D"]
+[node name="Shark" type="Area2D" groups=["fish"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

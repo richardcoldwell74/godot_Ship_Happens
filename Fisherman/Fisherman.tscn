@@ -4,14 +4,14 @@
 [ext_resource path="res://Fisherman/Fisherman.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.5, 7.5 )
+extents = Vector2( 13, 4 )
 
 [node name="Fisherman" type="Area2D"]
 scale = Vector2( -1, 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -7.5 )
+position = Vector2( 28, -4 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,3 +21,5 @@ hframes = 6
 
 [node name="LineSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 28, -13 )
+
+[connection signal="area_entered" from="." to="." method="_on_Fisherman_area_entered"]
