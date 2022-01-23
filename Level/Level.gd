@@ -16,6 +16,7 @@ func _on_GameTimer_timeout():
 
 func _ready() -> void:
 	GameManager.Score = 0
+	GameManager.BoatHealth = 20
 	randomize()
 	$Spawners/CrabSpawnTimer.start(rand_range(2, 5))
 	$Spawners/SharkSpawnTimer.start(rand_range(3, 6))
