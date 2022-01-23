@@ -1,6 +1,9 @@
 extends Area2D
 
 var velocity: Vector2 = Vector2(35, 0)
+var velocity_caught: Vector2 = Vector2(0, -15)
+var caught: bool = false
+var hook:Area2D
 
 
 func _ready():
@@ -8,12 +11,20 @@ func _ready():
 
 
 func _physics_process(delta) -> void:
-	position -= velocity * delta
-	off_screen_tidy_up()
+	if !caught:
+		position -= velocity * delta
+		off_screen_tidy_up()
+	if caught:
+		global_position = hook.global_position + Vector2(2,12)
 
 
-func fish_caught() -> void:
+func fish_caught(the_hook:Area2D) -> void:
+	print(the_hook)
+	print("fish_caught")
 	$AnimationPlayer.play("caught")
+	caught = true
+	hook = the_hook
+	global_position = the_hook.global_position
 
 
 func off_screen_tidy_up() -> void:

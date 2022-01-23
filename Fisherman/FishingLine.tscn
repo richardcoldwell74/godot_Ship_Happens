@@ -16,3 +16,5 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Hook"]
 texture = ExtResource( 2 )
+
+[connection signal="area_entered" from="Hook" to="." method="_on_Hook_area_entered"]

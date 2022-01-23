@@ -18,3 +18,5 @@ signal spawn_crab(fish, location)
 const SPAWN_CRAB: String = "spawn_crab"
 func signal_spawn_crab() -> void:
 	emit_signal("spawn_crab")
+
+
