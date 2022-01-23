@@ -15,8 +15,11 @@ func _physics_process(delta) -> void:
 	elif !going_down:
 		$Hook.position -= velocity * delta
 	bottom_screen_auto_recall()
+	top_screen_destroy()
 
-
+func top_screen_destroy() -> void:
+	if $Hook.position.y  < 0:
+		queue_free()
 
 func bottom_screen_auto_recall() -> void:
 	if $Hook.global_position.y >= 170:

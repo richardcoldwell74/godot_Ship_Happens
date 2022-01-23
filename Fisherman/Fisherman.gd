@@ -7,13 +7,13 @@ func _physics_process(delta):
 	if cast and !GameManager.FishingLineOnScreen:
 		spawn_fishing_line()
 	elif cast and GameManager.FishingLineOnScreen:
-		#need to bring hook back up
-		pass
+		$FishingLine.going_down = false
 
 
 
 
 func spawn_fishing_line() -> void:
-	SignalManager.emit_signal(
-			SignalManager.SPAWN_FISHING_LINE, FisingLineScene, $LineSpawnPoint.global_position
-		)
+	var fishing_line: Node2D = FisingLineScene.instance()
+	add_child(fishing_line)
+	fishing_line.global_position = $LineSpawnPoint.global_position
+	GameManager.FishingLineOnScreen=true

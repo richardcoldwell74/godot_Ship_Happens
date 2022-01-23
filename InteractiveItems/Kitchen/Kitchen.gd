@@ -4,8 +4,9 @@ var is_player_overlapping: bool
 var is_working: bool
 var state: String
 var repair_progress: int = 0
-var fully_repaired_value: int = 10
+var fully_repaired_value: int = 6
 var is_being_repaired: bool = false
+var DustScene: PackedScene = preload("res://Player/DustEffect.tscn")
 
 
 func _ready():
@@ -88,6 +89,13 @@ func repairing_damage() -> void:
 			$BrokenDownTimer.stop()
 			is_being_repaired = true
 			repair_progress += 1
+			#spawn dust
+			var dust = DustScene.instance()
+			add_child(dust)
+			dust.global_position = $Position2D.global_position
+			dust = DustScene.instance()
+			add_child(dust)
+			dust.global_position = $Position2D2.global_position
 			if repair_progress >= fully_repaired_value:
 				state = "WORKING"
 				GameManager.ItemsBrokenCurrentCount -= 1

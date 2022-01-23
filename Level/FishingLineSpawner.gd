@@ -6,7 +6,8 @@ func _ready():
 
 
 func _on_spawn_fishing_line(FishingLine: PackedScene, Location: Vector2) -> void:
-	var fishing_line: Node2D = FishingLine.instance()
-	add_child(fishing_line)
-	fishing_line.position = Location
-	GameManager.FishingLineOnScreen=true
+	pass
+#	var fishing_line: Node2D = FishingLine.instance()
+#	add_child(fishing_line)
+#	fishing_line.position = Location
+#	GameManager.FishingLineOnScreen=true

@@ -230,6 +230,12 @@ hframes = 8
 anims/RESET = SubResource( 9 )
 anims/on_fire = SubResource( 10 )
 
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -9, -5 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 11, -9 )
+
 [connection signal="body_entered" from="." to="." method="_on_Kitchen_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Kitchen_body_exited"]
 [connection signal="timeout" from="BreakDownTimer" to="." method="_on_BreakDownTimer_timeout"]
