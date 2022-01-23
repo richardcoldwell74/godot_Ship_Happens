@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var velocity: Vector2 = Vector2(0, 15)
+var velocity: Vector2 = Vector2(0, 30)
 var going_down: bool = true
 var has_fish_on_hook: bool = false
 

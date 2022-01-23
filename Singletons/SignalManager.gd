@@ -19,4 +19,9 @@ const SPAWN_CRAB: String = "spawn_crab"
 func signal_spawn_crab() -> void:
 	emit_signal("spawn_crab")
 
+# to be called when Fishing Line needs spawning
+signal spawn_fishing_line(fishing_line, location)
+const SPAWN_FISHING_LINE: String = "spawn_fishing_line"
+func spawn_fishing_line() -> void:
+	emit_signal("spawn_fishing_line")
 

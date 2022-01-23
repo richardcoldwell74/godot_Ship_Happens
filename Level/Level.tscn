@@ -16,8 +16,8 @@
 [ext_resource path="res://Level/CrabSpawner.gd" type="Script" id=14]
 [ext_resource path="res://Level/SharkSpawner.gd" type="Script" id=15]
 [ext_resource path="res://Shaders/ScrollShader.gdshader" type="Shader" id=16]
-[ext_resource path="res://Fisherman/FishingLine.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Fisherman/Fisherman.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Level/FishingLineSpawner.gd" type="Script" id=19]
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 16 )
@@ -236,15 +236,17 @@ material = SubResource( 6 )
 texture = ExtResource( 13 )
 centered = false
 
-[node name="CrabSpawner" type="Node2D" parent="."]
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="CrabSpawner" type="Node2D" parent="Spawners"]
 position = Vector2( 358, 169 )
 script = ExtResource( 14 )
 
-[node name="SharkSpawner" type="Node2D" parent="."]
+[node name="SharkSpawner" type="Node2D" parent="Spawners"]
 position = Vector2( 359, 140 )
 script = ExtResource( 15 )
 
-[node name="FishingLine" parent="." instance=ExtResource( 17 )]
-position = Vector2( 24, 59 )
+[node name="FishingLineSpawner" type="Node2D" parent="Spawners"]
+script = ExtResource( 19 )
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]

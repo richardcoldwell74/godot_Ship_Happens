@@ -7,3 +7,4 @@ var BoatHealth: int = 100
 var ApplyBoatDamage: bool = false
 var NoSharksOnScreen: int = 0
 var NoCrabsOnScreen: int = 0
+var FishingLineOnScreen: bool = false
