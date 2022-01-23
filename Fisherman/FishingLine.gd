@@ -37,4 +37,5 @@ func _on_Hook_area_entered(area):
 	if !has_fish_on_hook:
 		if area.has_method("fish_caught"):
 			has_fish_on_hook = true
+			going_down = false
 			area.fish_caught($Hook)
