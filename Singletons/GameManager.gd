@@ -12,8 +12,6 @@ var Score: int
 var GameRunning:bool = true
 
 
-
-
-func _process(delta):
+func _process(_delta):
 	if BoatHealth < 0:
 		BoatHealth = 0

@@ -1,7 +1,6 @@
 extends Sprite
 
 
-
 func _ready():
 	start_propeller()
 
