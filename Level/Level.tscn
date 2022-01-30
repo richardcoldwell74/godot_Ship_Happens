@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Level/textures/tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -22,7 +22,8 @@
 [ext_resource path="res://Level/textures/health_bar_under.png" type="Texture" id=20]
 [ext_resource path="res://Level/textures/health_bar_progress.png" type="Texture" id=21]
 [ext_resource path="res://Level/textures/health_bar_over.png" type="Texture" id=22]
-[ext_resource path="res://Level/textures/game_over.png" type="Texture" id=23]
+[ext_resource path="res://Level/GameOver/GameOver.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Fonts/PrStart.ttf" type="DynamicFontData" id=24]
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 16 )
@@ -108,6 +109,14 @@ shader = ExtResource( 16 )
 shader_param/Direction = Vector2( 1, 0 )
 shader_param/Speed = 0.04
 
+[sub_resource type="DynamicFont" id=8]
+size = 8
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 24 )
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -115,6 +124,9 @@ script = ExtResource( 4 )
 material = SubResource( 7 )
 texture = ExtResource( 12 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BoatBack" type="Sprite" parent="."]
 texture = ExtResource( 10 )
@@ -126,10 +138,12 @@ tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Kitchen" parent="." instance=ExtResource( 11 )]
+[node name="RepairableItems" type="Node2D" parent="."]
+
+[node name="Kitchen" parent="RepairableItems" instance=ExtResource( 11 )]
 position = Vector2( 225, 78 )
 
-[node name="Engine" parent="." instance=ExtResource( 3 )]
+[node name="Engine" parent="RepairableItems" instance=ExtResource( 3 )]
 position = Vector2( 111, 114 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -147,91 +161,97 @@ centered = false
 [node name="GameTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Solids" type="Node2D" parent="."]
+[node name="LevelStructure" type="Node2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="SolidFloor" parent="Solids" instance=ExtResource( 8 )]
+[node name="Solids" type="Node2D" parent="LevelStructure"]
+
+[node name="SolidFloor" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 166, 117 )
 scale = Vector2( 6.5, 1 )
 
-[node name="SolidFloor2" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidFloor2" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 206, 85 )
 scale = Vector2( 5.5, 1 )
 
-[node name="SolidFloor3" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidFloor3" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 101, 85 )
 scale = Vector2( 3, 1 )
 
-[node name="SolidFloor4" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidFloor4" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 75, 53 )
 scale = Vector2( 3, 1 )
 
-[node name="SolidFloor5" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidFloor5" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 152, 53 )
 scale = Vector2( 2.7, 1 )
 
-[node name="SolidFloor6" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidFloor6" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 244, 53 )
 scale = Vector2( 4.5, 1 )
 
-[node name="SolidWall" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 256, 82 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall2" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall2" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 74, 83 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall3" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall3" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 98, 115 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall4" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall4" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 234, 114 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall5" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall5" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 234, 114 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall6" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall6" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 294, 53 )
 scale = Vector2( 0.5, 10 )
 
-[node name="SolidWall7" parent="Solids" instance=ExtResource( 8 )]
+[node name="SolidWall7" parent="LevelStructure/Solids" instance=ExtResource( 8 )]
 position = Vector2( 56, 50 )
 scale = Vector2( 0.5, 10 )
 
-[node name="LadderStuff" type="Node2D" parent="."]
+[node name="LadderStuff" type="Node2D" parent="LevelStructure"]
 
-[node name="OneWay" parent="LadderStuff" instance=ExtResource( 9 )]
+[node name="OneWay" parent="LevelStructure/LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 141, 85 )
 
-[node name="OneWay2" parent="LadderStuff" instance=ExtResource( 9 )]
+[node name="OneWay2" parent="LevelStructure/LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 115, 53 )
 
-[node name="OneWay3" parent="LadderStuff" instance=ExtResource( 9 )]
+[node name="OneWay3" parent="LevelStructure/LadderStuff" instance=ExtResource( 9 )]
 position = Vector2( 189, 53 )
 
-[node name="LadderTop" parent="LadderStuff" instance=ExtResource( 6 )]
+[node name="LadderTop" parent="LevelStructure/LadderStuff" instance=ExtResource( 6 )]
 position = Vector2( 141, 82 )
 
-[node name="LadderTop2" parent="LadderStuff" instance=ExtResource( 6 )]
+[node name="LadderTop2" parent="LevelStructure/LadderStuff" instance=ExtResource( 6 )]
 position = Vector2( 189, 50 )
 
-[node name="LadderTop3" parent="LadderStuff" instance=ExtResource( 6 )]
+[node name="LadderTop3" parent="LevelStructure/LadderStuff" instance=ExtResource( 6 )]
 position = Vector2( 115, 50 )
 
-[node name="Ladder" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+[node name="Ladder" parent="LevelStructure/LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 141, 114 )
 scale = Vector2( 0.3, 2 )
 
-[node name="Ladder2" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+[node name="Ladder2" parent="LevelStructure/LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 189, 82 )
 scale = Vector2( 0.3, 2 )
 
-[node name="Ladder3" parent="LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
+[node name="Ladder3" parent="LevelStructure/LadderStuff" groups=["ladder"] instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 115, 82 )
 scale = Vector2( 0.3, 2 )
@@ -280,6 +300,7 @@ __meta__ = {
 margin_left = 1.0
 margin_right = 141.0
 margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -288,18 +309,13 @@ __meta__ = {
 margin_left = 155.0
 margin_right = 319.0
 margin_bottom = 14.0
+custom_fonts/font = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOverTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="GameOver" type="Sprite" parent="."]
-texture = ExtResource( 23 )
-centered = false
+[node name="GameOver" parent="." instance=ExtResource( 23 )]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="Spawners/CrabSpawnTimer" to="." method="_on_CrabSpawnTimer_timeout"]
 [connection signal="timeout" from="Spawners/SharkSpawnTimer" to="." method="_on_SharkSpawnTimer_timeout"]
-[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]

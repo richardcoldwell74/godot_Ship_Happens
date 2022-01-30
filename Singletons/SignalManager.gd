@@ -25,3 +25,10 @@ const SPAWN_FISHING_LINE: String = "spawn_fishing_line"
 func spawn_fishing_line() -> void:
 	emit_signal("spawn_fishing_line")
 
+
+# to be called when Fishing Line needs spawning
+signal game_over()
+const GAME_OVER: String = "game_over"
+func game_over() -> void:
+	emit_signal("game_over")
+	

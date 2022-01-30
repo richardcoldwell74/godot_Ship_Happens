@@ -11,12 +11,11 @@ func _ready():
 
 
 func _physics_process(delta) -> void:
-	if GameManager.GameRunning:
-		if !caught:
-			position -= velocity * delta
-			off_screen_tidy_up()
-		if caught:
-			global_position = hook.global_position + Vector2(2,12)
+	if !caught:
+		position -= velocity * delta
+		off_screen_tidy_up()
+	if caught:
+		global_position = hook.global_position + Vector2(2,12)
 
 
 func fish_caught(the_hook:Area2D) -> void:

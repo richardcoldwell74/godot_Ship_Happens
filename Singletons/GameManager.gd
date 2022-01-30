@@ -9,7 +9,6 @@ var NoSharksOnScreen: int = 0
 var NoCrabsOnScreen: int = 0
 var FishingLineOnScreen: bool = false
 var Score: int 
-var GameRunning:bool = true
 
 
 func _process(_delta):

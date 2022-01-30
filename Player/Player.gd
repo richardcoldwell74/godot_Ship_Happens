@@ -16,17 +16,16 @@ func _ready():
 
 
 func _physics_process(delta):
-	if GameManager.GameRunning:
-		if state == "PLATFORM":
-			get_input_platform()
-			velocity.y += gravity * delta
-			velocity = move_and_slide(velocity, Vector2(0, -1))
-		if state == "LADDER":
-			get_input_ladder()
-			velocity = move_and_slide(velocity, Vector2(0, -1))
-		$AnimationPlayer.player_animations(is_on_floor(), state, velocity, $Sprite)
-		if !is_ovelapping_ladder:
-			state = "PLATFORM"
+	if state == "PLATFORM":
+		get_input_platform()
+		velocity.y += gravity * delta
+		velocity = move_and_slide(velocity, Vector2(0, -1))
+	if state == "LADDER":
+		get_input_ladder()
+		velocity = move_and_slide(velocity, Vector2(0, -1))
+	$AnimationPlayer.player_animations(is_on_floor(), state, velocity, $Sprite)
+	if !is_ovelapping_ladder:
+		state = "PLATFORM"
 
 
 func get_input_platform() -> void:
@@ -47,8 +46,6 @@ func get_input_platform() -> void:
 	var actionPressed = Input.is_action_pressed("player_action")
 	if actionPressed and is_ovelapping_repairable:
 		state = "FIXING"
-	else:
-		state == "PLATFORM"
 
 
 func get_input_ladder() -> void:
