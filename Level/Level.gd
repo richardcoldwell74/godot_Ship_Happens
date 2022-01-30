@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _process(_delta):
 	if GameManager.BoatHealth == 0:
+		$UI/ShipHealthLabel.text = "SHIP HEALTH: 0" # set ui health to 0 as doesn't update to 0 otherwise
 		SignalManager.emit_signal(SignalManager.GAME_OVER)
 		
 
