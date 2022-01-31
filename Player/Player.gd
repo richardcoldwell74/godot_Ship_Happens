@@ -7,25 +7,27 @@ var gravity: int = 800
 var is_ovelapping_ladder: bool = false
 var is_ovelapping_ladder_top: bool = false
 var is_ovelapping_repairable: bool = false
-var state: String
 var velocity: Vector2 = Vector2.ZERO
+enum states {PLATFORM, LADDER, FIXING}
+var state
 
 
 func _ready():
-	state = "PLATFORM"
+	state = states.PLATFORM
+
 
 
 func _physics_process(delta):
-	if state == "PLATFORM":
+	if state == states.PLATFORM:
 		get_input_platform()
 		velocity.y += gravity * delta
 		velocity = move_and_slide(velocity, Vector2(0, -1))
-	if state == "LADDER":
+	if state == states.LADDER:
 		get_input_ladder()
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 	$AnimationPlayer.player_animations(is_on_floor(), state, velocity, $Sprite)
 	if !is_ovelapping_ladder:
-		state = "PLATFORM"
+		state = states.PLATFORM
 
 
 func get_input_platform() -> void:
@@ -33,19 +35,19 @@ func get_input_platform() -> void:
 	velocity.x = Input.get_axis("player_left", "player_right") * run_speed
 	#jump
 	var jump = Input.is_action_just_pressed("player_jump")
-	if jump and is_on_floor() and state == "PLATFORM":
+	if jump and is_on_floor() and state == states.PLATFORM:
 		velocity.y = jump_speed
 	# capture up & down to use in changing to ladder state
 	var YInput: float = Input.get_axis("player_up", "player_down") * climb_speed
 	if is_ovelapping_ladder and YInput < 0:
-		state = "LADDER"
+		state = states.LADDER
 	if is_ovelapping_ladder_top and is_on_floor() and YInput > 0:
-		state = "LADDER"
+		state = states.LADDER
 		position.y += 1
 		is_ovelapping_ladder = true
 	var actionPressed = Input.is_action_pressed("player_action")
 	if actionPressed and is_ovelapping_repairable:
-		state = "FIXING"
+		state = states.FIXING
 
 
 func get_input_ladder() -> void:
@@ -55,7 +57,7 @@ func get_input_ladder() -> void:
 	# up down movement
 	velocity.y = Input.get_axis("player_up", "player_down") * climb_speed
 	if is_on_floor():
-		state = "PLATFORM"
+		state = states.PLATFORM
 
 
 

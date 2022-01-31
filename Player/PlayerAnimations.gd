@@ -1,10 +1,12 @@
 extends AnimationPlayer
 
 
-func player_animations(IsOnFloor: bool,state: String, velocity:Vector2, sprite: Sprite) -> void:
-	if state == "FIXING":
+enum states {PLATFORM, LADDER, FIXING}
+
+func player_animations(IsOnFloor: bool,state, velocity:Vector2, sprite: Sprite) -> void:
+	if state == states.FIXING:
 		play("fixing")
-	if state == "PLATFORM":
+	if state == states.PLATFORM:
 		if IsOnFloor:
 			if velocity.x == 0:
 				play("idle")
@@ -23,7 +25,7 @@ func player_animations(IsOnFloor: bool,state: String, velocity:Vector2, sprite: 
 				sprite.scale.x = -1
 			if velocity.x > 0:
 				sprite.scale.x = 1
-	if state == "LADDER":
+	if state == states.LADDER:
 		if velocity.y == 0:
 			.stop()
 		elif velocity.y != 0:
