@@ -193,8 +193,6 @@ anims/two = SubResource( 8 )
 [node name="Propeller" parent="." instance=ExtResource( 5 )]
 position = Vector2( -40, -1 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -3, -9 )
 
