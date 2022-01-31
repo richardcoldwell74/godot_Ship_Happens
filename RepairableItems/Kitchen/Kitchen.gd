@@ -83,7 +83,7 @@ func update_boat_health() -> void:
 
 
 func repairing_damage() -> void:
-	if state != "WORKING":
+	if state != "WORKING" and is_player_overlapping:
 		var actionPressed = Input.is_action_pressed("player_action")
 		if actionPressed:
 			$BrokenDownTimer.stop()

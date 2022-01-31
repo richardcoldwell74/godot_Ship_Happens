@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire.png-8cb3f6f92fd6726f432f8d180ae5c0bf.stex"
+path="res://.import/warning.png-3b4e240c2cf29ae24ced24791610e6a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://InteractiveItems/Kitchen/textures/fire.png"
-dest_files=[ "res://.import/fire.png-8cb3f6f92fd6726f432f8d180ae5c0bf.stex" ]
+source_file="res://RepairableItems/Engine/textures/warning.png"
+dest_files=[ "res://.import/warning.png-3b4e240c2cf29ae24ced24791610e6a7.stex" ]
 
 [params]
 

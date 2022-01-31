@@ -1,7 +1,8 @@
 [gd_scene load_steps=28 format=2]
 
+[ext_resource path="res://RepairableItems/RepairableItems.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://InteractiveItems/Engine/Engine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RepairableItems/RepairableItems.gd" type="Script" id=3]
 [ext_resource path="res://Level/Level.gd" type="Script" id=4]
 [ext_resource path="res://Ladder/Ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Ladder/LadderTop.tscn" type="PackedScene" id=6]
@@ -9,7 +10,6 @@
 [ext_resource path="res://Level/LevelStructure/Solid.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Level/LevelStructure/OneWay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Level/textures/boat_game_back.png" type="Texture" id=10]
-[ext_resource path="res://InteractiveItems/Kitchen/Kitchen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Level/textures/sea.png" type="Texture" id=12]
 [ext_resource path="res://Level/textures/seabed.png" type="Texture" id=13]
 [ext_resource path="res://Level/CrabSpawner.gd" type="Script" id=14]
@@ -57,13 +57,8 @@ __meta__ = {
 texture = ExtResource( 10 )
 centered = false
 
-[node name="RepairableItems" type="Node2D" parent="."]
-
-[node name="Kitchen" parent="RepairableItems" instance=ExtResource( 11 )]
-position = Vector2( 225, 78 )
-
-[node name="Engine" parent="RepairableItems" instance=ExtResource( 3 )]
-position = Vector2( 111, 114 )
+[node name="RepairableItems" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 169, 104 )

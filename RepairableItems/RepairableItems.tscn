@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://RepairableItems/Engine/Engine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RepairableItems/Kitchen/Kitchen.tscn" type="PackedScene" id=5]
+
+[node name="RepairableItems" type="Node2D"]
+
+[node name="Kitchen" parent="." instance=ExtResource( 5 )]
+position = Vector2( 225, 78 )
+
+[node name="Engine" parent="." instance=ExtResource( 4 )]
+position = Vector2( 111, 114 )

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/engine.wav-4f10490911e19a4d7ac3e29adc9a1245.sample"
+path="res://.import/engine.wav-5dafdaa5d1e7b478acde21b6b2d8466d.sample"
 
 [deps]
 
-source_file="res://InteractiveItems/Engine/sfx/engine.wav"
-dest_files=[ "res://.import/engine.wav-4f10490911e19a4d7ac3e29adc9a1245.sample" ]
+source_file="res://RepairableItems/Engine/sfx/engine.wav"
+dest_files=[ "res://.import/engine.wav-5dafdaa5d1e7b478acde21b6b2d8466d.sample" ]
 
 [params]
 
